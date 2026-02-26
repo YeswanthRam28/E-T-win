@@ -300,7 +300,7 @@ export default function SimulationDashboard() {
                     </button>
                     <div className="flex items-center justify-between">
                         <div>
-                            <div className="text-xl font-monoton tracking-widest text-emerald-400">E&lt;T&gt;WIN</div>
+                            <div className="text-lg font-bold font-display tracking-[0.2em] text-emerald-400">E&lt;T&gt;WIN</div>
                             <p className="text-[9px] text-zinc-600 uppercase tracking-[0.2em]">Chennai · Digital Twin</p>
                         </div>
                         <div className="flex flex-col gap-1 items-end">

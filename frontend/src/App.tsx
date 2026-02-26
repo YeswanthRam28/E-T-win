@@ -405,7 +405,7 @@ export default function App() {
           className="max-w-3xl mx-auto relative z-10"
         >
           <RevealText className="mb-12 pointer-events-none">
-            <h2 className="text-6xl md:text-9xl font-monoton font-bold tracking-tighter uppercase leading-none mb-12">
+            <h2 className="text-6xl md:text-9xl font-display font-medium tracking-tighter uppercase leading-none mb-12">
               START THE <br /> SIMULATION.
             </h2>
           </RevealText>
@@ -414,9 +414,9 @@ export default function App() {
             onClick={() => navigate('/simulation')}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="group relative px-16 py-8 bg-[#00c853] text-black font-monoton font-bold text-2xl uppercase tracking-widest overflow-hidden transition-all shadow-[0_0_30px_rgba(0,200,83,0.3)] hover:shadow-[0_0_50px_rgba(0,200,83,0.5)]"
+            className="group relative px-16 py-8 bg-[#00c853] text-black font-display font-bold text-2xl uppercase tracking-widest overflow-hidden transition-all shadow-[0_0_30px_rgba(0,200,83,0.3)] hover:shadow-[0_0_50px_rgba(0,200,83,0.5)]"
           >
-            <span className="relative z-10">REQUEST ACCESS</span>
+            <span className="relative z-10">ENTER SIMULATION</span>
             <ArrowRight className="absolute right-6 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-all" />
           </motion.button>
 
