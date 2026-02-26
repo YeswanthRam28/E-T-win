@@ -1,0 +1,11 @@
+fastapi
+uvicorn[standard]
+pydantic
+python-dotenv
+torch --index-url https://download.pytorch.org/whl/cpu
+torch-geometric
+networkx
+numpy
+joblib
+google-generativeai
+scikit-learn

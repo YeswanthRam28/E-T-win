@@ -1,9 +1,9 @@
 // ─── E<T>WIN Digital Twin API Client ─────────────────────────────────────────
-// SIM_API  → local GNN simulation engine (this laptop)
-// GOV_API  → teammate's governance API (172.16.45.169)
+// SIM_API  → GNN simulation engine (backend/api/server.py)
+// GOV_API  → Governance / signal injection API (n8n.py equivalent)
 
-export const SIM_API = 'http://localhost:8000';
-export const GOV_API = 'http://172.16.45.169:8050';
+export const SIM_API = import.meta.env.VITE_SIM_API_URL || 'http://localhost:8000';
+export const GOV_API = import.meta.env.VITE_GOV_API_URL || 'http://localhost:8000';
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 

@@ -19,6 +19,7 @@ coverage/
 # Database
 *.sqlite
 *.sqlite3
+*.db
 
 # Python
 __pycache__/
@@ -36,5 +37,12 @@ env/
 build_output.log
 error.log
 
-# Models (Ignore large files if needed, but keeping joblib as per user preference if small)
+# Models
 # *.joblib
+
+# Local deployment notes (keep private)
+deploy.md
+
+# Root-level stray files from development
+/n8n.py
+/gaia_signals.db

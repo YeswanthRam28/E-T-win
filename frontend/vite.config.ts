@@ -11,6 +11,8 @@ export default defineConfig(({ mode }) => {
     plugins: [react(), tailwindcss(), cesium()],
     define: {
       'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY),
+      'import.meta.env.VITE_SIM_API_URL': JSON.stringify(env.VITE_SIM_API_URL || ''),
+      'import.meta.env.VITE_GOV_API_URL': JSON.stringify(env.VITE_GOV_API_URL || ''),
     },
     resolve: {
       alias: {

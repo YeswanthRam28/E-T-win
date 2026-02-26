@@ -2,63 +2,105 @@
 <img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
 </div>
 
-# E<T>WIN
+# E\<T\>WIN — Echelon Twin
 
-**Autonomous Policy Simulation through Multi-Agent Reinforcement Learning.**
+**Autonomous Policy Simulation through Multi-Agent Reinforcement Learning & Real-World Signal Injection.**
 
-E<T>WIN creates a high-fidelity digital twin of urban ecosystems, modeling the complex interplay between climate, economy, and social equity. By leveraging Graph Neural Networks and Causal AI, we simulate years of policy impact in seconds, allowing leaders to stress-test decisions before they are made.
+E\<T\>WIN creates a high-fidelity digital twin of urban ecosystems, modeling the complex interplay between climate, economy, and social equity. By leveraging Graph Neural Networks and Causal AI, we simulate years of policy impact in seconds — and now **breathes with real planetary data** via live climate signal injection.
+
+> "GAIA-SYNTH integrates real-world signals to dynamically update policy simulations in near real time."
 
 Aligned with the UN Sustainable Development Goals:
-- Climate Action (SDG 13)
-- Sustainable Cities (SDG 11)
-- Clean Water (SDG 06)
-- Clean Energy (SDG 07)
-- Reduced Inequalities (SDG 10)
-- Strong Institutions (SDG 16)
+- 🌍 Climate Action (SDG 13)
+- 🏙️ Sustainable Cities (SDG 11)
+- 💧 Clean Water (SDG 06)
+- ⚡ Clean Energy (SDG 07)
+- ⚖️ Reduced Inequalities (SDG 10)
+- 🏛️ Strong Institutions (SDG 16)
 
-## Features
+---
 
-- **Climate Dynamics**: Real-time atmospheric modeling integrated with urban heat island effects. Simulate carbon sequestration policies and flood resilience strategies.
-- **Economic Flow**: Agent-based modeling of micro-economies. Test the impact of subsidies, tax shifts, and universal basic income on local district prosperity.
-- **Social Equity**: Mapping inequality shifts through causal AI. Understand how infrastructure changes affect marginalized communities before breaking ground.
-- **3D Visualization**: High-fidelity 3D modeling of urban environments powered by React Three Fiber.
+## 🏗 Architecture
 
-## Getting Started
+```
+[ Open-Meteo API ] ──► [ n8n Workflow ] ──POST──► [ FastAPI Backend ]
+                                                         │
+                                              ┌──────────┴──────────┐
+                                        GNN Simulation         Governance API
+                                        (PyTorch/PyG)          (Signal Injection)
+                                              └──────────┬──────────┘
+                                                         │
+                                                 [ React Frontend ]
+```
+
+---
+
+## ✨ Features
+
+- **Real-World Signal Injection**: Live climate data (temperature, rainfall, wind) from Open-Meteo feeds directly into the simulation every hour via n8n.
+- **Adaptive Governance**: Anomaly detection automatically triggers emergency policy simulations when climate thresholds are breached.
+- **Climate Dynamics**: Real-time atmospheric modeling with urban heat island effects and carbon sequestration simulation.
+- **Economic Flow**: Agent-based modeling of micro-economies. Test subsidies, tax shifts, and UBI on local district prosperity.
+- **Social Equity**: Causal AI mapping of inequality shifts across infrastructure interventions.
+- **3D Visualization**: High-fidelity 3D urban modeling powered by React Three Fiber and CesiumJS.
+
+---
+
+## 🌐 Live Endpoints
+
+| Endpoint | Description |
+| :--- | :--- |
+| `GET /api/state/current` | SDG composite score, stability, confidence |
+| `GET /api/signals/climate` | Live temperature, precipitation, anomaly detection |
+| `GET /api/systems/water` | Reservoir levels, stress index, days to critical |
+| `GET /api/systems/economy` | GDP growth, energy pricing, economic stability |
+| `GET /api/systems/social` | Inequality, public sentiment, governance confidence |
+| `GET /api/alerts/recent` | Real-time event & anomaly stream |
+| `GET /api/insights/latest` | AI-recommended policy with confidence score |
+| `GET /api/timeline` | Historical ledger of signals and SDG deltas |
+| `GET /api/forecast/7-cycle` | 7-step resource projections |
+| `POST /update-digital-twin` | n8n signal injection endpoint |
+
+---
+
+## 🚀 Getting Started
 
 ### Prerequisites
-
-- Node.js
+- Node.js 18+
+- Python 3.11+
 - A Gemini API Key
 
-### Installation
+### Backend
+```bash
+pip install -r requirements.txt
+cd backend/api
+python server.py
+```
 
-1. Clone the repository and install dependencies:
-   ```bash
-   npm install
-   ```
+### Frontend
+```bash
+cd frontend
+cp .env.example .env.local
+# Edit .env.local — set GEMINI_API_KEY and VITE_SIM_API_URL
+npm install
+npm run dev
+```
 
-2. Set up your environment variables. Copy `.env.example` to `.env.local` and add your Gemini API key:
-   ```bash
-   cp .env.example .env.local
-   # Edit .env.local to set GEMINI_API_KEY=your_api_key_here
-   ```
+---
 
-3. Run the development server:
-   ```bash
-   npm run dev
-   ```
+## 🛠 Tech Stack
 
-4. Build for production:
-   ```bash
-   npm run build
-   ```
+| Layer | Technology |
+| :--- | :--- |
+| **Frontend** | React 19, TypeScript, Vite, Tailwind CSS v4, Framer Motion |
+| **3D / Maps** | Three.js, React Three Fiber, CesiumJS, MapLibre GL |
+| **Backend** | FastAPI, Uvicorn, Pydantic |
+| **AI/ML** | PyTorch, PyTorch Geometric (GNN), Google Gemini |
+| **Signal Injection** | n8n, Open-Meteo API |
+| **Charts** | Recharts |
 
-## Tech Stack
-
-- **Frontend**: React, TypeScript, Vite, Tailwind CSS, Framer Motion, Lucide React
-- **3D Graphics**: Three.js, React Three Fiber, React Three Drei
-- **Backend/Data**: Express, Better SQLite3, Google GenAI SDK
+---
 
 ## License
 
-© 2026 E<T>WIN DIGITAL TWIN SYSTEMS
+© 2026 E\<T\>WIN DIGITAL TWIN SYSTEMS
