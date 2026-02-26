@@ -3,7 +3,7 @@
 // GOV_API  → Governance / signal injection API (n8n.py equivalent)
 
 export const SIM_API = import.meta.env.VITE_SIM_API_URL || 'http://localhost:8000';
-export const GOV_API = import.meta.env.VITE_GOV_API_URL || 'http://localhost:8000';
+export const GOV_API = import.meta.env.VITE_GOV_API_URL || 'http://localhost:8050';
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
