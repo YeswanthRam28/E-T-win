@@ -1,16 +1,17 @@
 import { motion, useScroll, useTransform, useSpring, useInView } from "motion/react";
-import React, { useRef, useEffect } from "react";
+import React, { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import { Scene3D } from "./components/Scene3D";
-import { 
-  Globe, 
-  Zap, 
-  Droplets, 
-  Building2, 
-  Users, 
-  ArrowRight, 
-  Activity, 
-  Cpu, 
-  ShieldCheck 
+import {
+  Globe,
+  Zap,
+  Droplets,
+  Building2,
+  Users,
+  ArrowRight,
+  Activity,
+  Cpu,
+  ShieldCheck
 } from "lucide-react";
 
 const RevealText = ({ children, className = "", delay = 0 }: { children: React.ReactNode, className?: string, delay?: number }) => {
@@ -55,7 +56,7 @@ const Building3D = ({ height = 100, color = "emerald" }: { height?: number, colo
   };
 
   return (
-    <motion.div 
+    <motion.div
       whileHover={{ scale: 1.05, rotateY: 15 }}
       className="relative preserve-3d w-16 transition-all duration-500"
       style={{ height: `${height}px` }}
@@ -70,10 +71,10 @@ const Building3D = ({ height = 100, color = "emerald" }: { height?: number, colo
       <div className={`absolute inset-y-0 right-0 w-[20px] border ${colors[color]} origin-right [transform:rotateY(90deg)]`} />
       {/* Top */}
       <div className={`absolute inset-x-0 top-0 h-[20px] border ${colors[color]} origin-top [transform:rotateX(-90deg)]`} />
-      
+
       {/* Data lines */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <motion.div 
+        <motion.div
           animate={{ y: [0, height] }}
           transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
           className="w-full h-[1px] bg-white/30"
@@ -84,6 +85,8 @@ const Building3D = ({ height = 100, color = "emerald" }: { height?: number, colo
 };
 
 export default function App() {
+  const navigate = useNavigate();
+
   const containerRef = useRef<HTMLDivElement>(null);
   const horizontalRef = useRef<HTMLDivElement>(null);
 
@@ -105,18 +108,19 @@ export default function App() {
   const x = useTransform(horizontalScroll, [0, 1], ["0%", "-66.6%"]);
   const springX = useSpring(x, { stiffness: 100, damping: 30 });
 
+
   return (
     <div ref={containerRef} className="relative font-sans bg-black">
       <Scene3D scrollYProgress={scrollYProgress} />
-      
+
       {/* Hero Section with Zoom Parallax */}
-      <section className="sticky top-0 h-screen flex items-center justify-center overflow-hidden z-20">
-        <motion.div 
+      <section className="sticky top-0 h-screen flex items-center justify-center overflow-hidden z-20 pointer-events-none">
+        <motion.div
           style={{ scale, opacity, filter: blur }}
           className="text-center z-10 px-4"
         >
           <div className="overflow-hidden">
-            <motion.h1 
+            <motion.h1
               initial={{ y: "100%" }}
               animate={{ y: 0 }}
               transition={{ duration: 1.2, ease: [0.33, 1, 0.68, 1] }}
@@ -156,7 +160,7 @@ export default function App() {
               is the future of governance.
             </h2>
           </RevealText>
-          
+
           <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-12 text-zinc-400 text-lg">
             <FadeIn delay={0.4}>
               <p>
@@ -173,9 +177,9 @@ export default function App() {
       </section>
 
       {/* Vertical to Horizontal Storytelling */}
-      <div ref={horizontalRef} className="relative h-[300vh]">
+      <div ref={horizontalRef} className="relative h-[300vh] pointer-events-none">
         <div className="sticky top-0 h-screen overflow-hidden">
-          <motion.div 
+          <motion.div
             style={{ x: springX }}
             className="flex h-full w-[300vw]"
           >
@@ -189,7 +193,7 @@ export default function App() {
                     </div>
                   </FadeIn>
                   <RevealText>
-                    <h3 className="text-5xl md:text-7xl font-display font-bold mb-6">CLIMATE<br/>DYNAMICS</h3>
+                    <h3 className="text-5xl md:text-7xl font-display font-bold mb-6">CLIMATE<br />DYNAMICS</h3>
                   </RevealText>
                   <FadeIn delay={0.2}>
                     <p className="text-xl text-zinc-400 leading-relaxed">
@@ -215,8 +219,8 @@ export default function App() {
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center w-full max-w-7xl">
                 <div className="order-2 lg:order-1 relative aspect-square bg-zinc-900/30 backdrop-blur-sm rounded-3xl border border-white/5 overflow-hidden">
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <motion.div 
-                      whileInView={{ 
+                    <motion.div
+                      whileInView={{
                         scale: [1, 1.1, 1],
                         rotate: [0, 5, 0]
                       }}
@@ -236,7 +240,7 @@ export default function App() {
                     </div>
                   </FadeIn>
                   <RevealText>
-                    <h3 className="text-5xl md:text-7xl font-display font-bold mb-6">ECONOMIC<br/>FLOW</h3>
+                    <h3 className="text-5xl md:text-7xl font-display font-bold mb-6">ECONOMIC<br />FLOW</h3>
                   </RevealText>
                   <FadeIn delay={0.2}>
                     <p className="text-xl text-zinc-400 leading-relaxed">
@@ -257,7 +261,7 @@ export default function App() {
                     </div>
                   </FadeIn>
                   <RevealText>
-                    <h3 className="text-5xl md:text-7xl font-display font-bold mb-6">SOCIAL<br/>EQUITY</h3>
+                    <h3 className="text-5xl md:text-7xl font-display font-bold mb-6">SOCIAL<br />EQUITY</h3>
                   </RevealText>
                   <FadeIn delay={0.2}>
                     <p className="text-xl text-zinc-400 leading-relaxed">
@@ -268,13 +272,13 @@ export default function App() {
                 <FadeIn delay={0.4} className="relative aspect-square bg-zinc-900/30 backdrop-blur-sm rounded-3xl border border-white/5 overflow-hidden">
                   <div className="absolute inset-0 p-12 flex flex-col justify-between">
                     {[1, 2, 3, 4].map((i) => (
-                      <motion.div 
+                      <motion.div
                         key={i}
                         initial={{ width: "30%" }}
                         whileInView={{ width: `${30 + i * 15}%` }}
                         className="h-4 bg-amber-500/20 rounded-full overflow-hidden"
                       >
-                        <motion.div 
+                        <motion.div
                           animate={{ x: ["-100%", "100%"] }}
                           transition={{ duration: 3, repeat: Infinity, delay: i * 0.5 }}
                           className="w-24 h-full bg-amber-500/40"
@@ -395,24 +399,27 @@ export default function App() {
 
       {/* CTA Section - Now at the absolute end */}
       <section className="py-64 px-6 text-center relative overflow-hidden border-t border-white/5">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           className="max-w-3xl mx-auto relative z-10"
         >
-          <RevealText className="mb-12">
-            <h2 className="text-5xl md:text-8xl font-display font-bold tracking-tighter uppercase">
-              Start the <br /> Simulation.
+          <RevealText className="mb-12 pointer-events-none">
+            <h2 className="text-6xl md:text-9xl font-monoton font-bold tracking-tighter uppercase leading-none mb-12">
+              START THE <br /> SIMULATION.
             </h2>
           </RevealText>
-          <motion.button 
+
+          <motion.button
+            onClick={() => navigate('/simulation')}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="group relative px-12 py-6 bg-emerald-500 text-black font-display font-bold text-xl uppercase tracking-widest overflow-hidden transition-all hover:pr-16"
+            className="group relative px-16 py-8 bg-[#00c853] text-black font-monoton font-bold text-2xl uppercase tracking-widest overflow-hidden transition-all shadow-[0_0_30px_rgba(0,200,83,0.3)] hover:shadow-[0_0_50px_rgba(0,200,83,0.5)]"
           >
-            <span className="relative z-10">Request Access</span>
+            <span className="relative z-10">REQUEST ACCESS</span>
             <ArrowRight className="absolute right-6 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-all" />
           </motion.button>
+
           <FadeIn delay={0.4}>
             <p className="mt-12 font-mono text-xs text-zinc-500 tracking-widest">
               V.1.0.4 // MULTI-AGENT KERNEL ACTIVE

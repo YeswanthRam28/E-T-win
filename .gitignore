@@ -19,3 +19,22 @@ coverage/
 # Database
 *.sqlite
 *.sqlite3
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.venv/
+env/
+.env
+.pytest_cache/
+.mypy_cache/
+
+# Artifacts
+.gemini/
+build_output.log
+error.log
+
+# Models (Ignore large files if needed, but keeping joblib as per user preference if small)
+# *.joblib

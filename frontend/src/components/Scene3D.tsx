@@ -7,10 +7,10 @@ const Building = ({ position, args }: { position: [number, number, number], args
   return (
     <mesh position={position}>
       <boxGeometry args={args} />
-      <meshStandardMaterial 
-        color="#ffffff" 
-        metalness={0.5} 
-        roughness={0.2} 
+      <meshStandardMaterial
+        color="#ffffff"
+        metalness={0.5}
+        roughness={0.2}
         envMapIntensity={0.5}
       />
     </mesh>
@@ -79,8 +79,8 @@ export const Scene3D = ({ scrollYProgress }: { scrollYProgress: any }) => {
   };
 
   return (
-    <div 
-      className="fixed inset-0 z-0 pointer-events-none" 
+    <div
+      className="fixed inset-0 z-0 pointer-events-none"
       onMouseMove={handleMouseMove}
       style={{ background: '#000000' }}
     >
@@ -93,14 +93,14 @@ export const Scene3D = ({ scrollYProgress }: { scrollYProgress: any }) => {
       >
         <PerspectiveCamera makeDefault position={[0, 20, 50]} fov={60} />
         <fog attach="fog" args={['#000000', 30, 150]} />
-        
+
         <ambientLight intensity={0.2} />
         <pointLight position={[10, 20, 10]} intensity={1.5} color="#ffffff" />
         <spotLight position={[-20, 40, 20]} angle={0.15} penumbra={1} intensity={2} castShadow />
 
         <SceneContent scrollYProgress={scrollYProgress} mouse={mouse} />
       </Canvas>
-      
+
       {/* Bottom Gradient Overlay */}
       <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-t from-black to-transparent pointer-events-none" />
     </div>
