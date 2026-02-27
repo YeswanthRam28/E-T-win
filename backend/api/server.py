@@ -186,13 +186,13 @@ def policy_chat(req: PolicyChatRequest):
         try:
             import google.generativeai as genai
             genai.configure(api_key=api_key)
-            model = genai.GenerativeModel("gemini-1.5-flash")
+            model = genai.GenerativeModel("gemini-2.5-flash")
             resp = model.generate_content(context)
             analysis = resp.text
         except Exception as e:
-            analysis = f"âš ï¸ LLM failed: {e}"
+            analysis = f" LLM failed: {e}"
     else:
-        analysis = f"âš ï¸ No API key. Delta SDG: {delta.get('composite_sdg_score')}"
+        analysis = f"No API key. Delta SDG: {delta.get('composite_sdg_score')}"
 
     return {"analysis": analysis, "policy_used": policy, "baseline": baseline, "projected": projected, "weather": weather, "delta": delta, "timestep": engine.current_timestep}
 
