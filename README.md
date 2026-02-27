@@ -8,7 +8,7 @@
 
 E\<T\>WIN creates a high-fidelity digital twin of urban ecosystems, modeling the complex interplay between climate, economy, and social equity. By leveraging Graph Neural Networks and Causal AI, we simulate years of policy impact in seconds — and now **breathes with real planetary data** via live climate signal injection.
 
-> "GAIA-SYNTH integrates real-world signals to dynamically update policy simulations in near real time."
+> "E\<T\>WIN integrates real-world signals to dynamically update policy simulations in near real time."
 
 Aligned with the UN Sustainable Development Goals:
 - 🌍 Climate Action (SDG 13)

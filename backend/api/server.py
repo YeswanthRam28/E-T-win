@@ -179,7 +179,7 @@ def policy_chat(req: PolicyChatRequest):
     weather = _run_forecast(steps=7)
     delta = {k: round(projected[k] - baseline[k], 4) for k in ["composite_sdg_score", "total_emissions", "total_water_consumption"] if k in baseline}
 
-    context = f"You are GAIA-SYNTH, advisor for Chennai.\nQuestion: {req.question}\nBaseline: {baseline}\nProjected: {projected}\nDelta: {delta}\nWeather: {weather}"
+    context = f"You are E<T>WIN, advisor for Chennai.\nQuestion: {req.question}\nBaseline: {baseline}\nProjected: {projected}\nDelta: {delta}\nWeather: {weather}"
     
     api_key = req.gemini_api_key or os.getenv("GEMINI_API_KEY", "")
     if api_key:
