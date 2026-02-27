@@ -197,7 +197,6 @@ export default function CityHexMap({ nodes, timestep, onHover }: CityHexMapProps
                 onViewStateChange={({ viewState: vs }) => setViewState(vs as unknown as MapViewState)}
                 controller={true}
                 layers={layers}
-                useDevicePixels={false}
                 onHover={({ object, x, y }) => {
                     if (onHover) onHover(object ? { x, y, node: object as NodeData } : null);
                 }}

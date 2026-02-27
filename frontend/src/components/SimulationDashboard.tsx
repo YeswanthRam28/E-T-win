@@ -322,7 +322,7 @@ export default function SimulationDashboard() {
                 {/* Top metrics strip */}
                 <div className="grid grid-cols-2 gap-px bg-white/5">
                     {[
-                        { label: 'SDG Score', value: sdg.toFixed(1), color: sdgColor },
+                        { label: 'SDG Score', value: (sdg ?? 0).toFixed(1), color: sdgColor },
                         { label: 'Stability', value: (stateData?.system_stability_score ?? 0).toFixed(1), color: 'text-blue-400' },
                         { label: 'Confidence', value: `${((stateData?.confidence_score ?? 0) * 100).toFixed(0)}%`, color: 'text-purple-400' },
                         { label: 'Cycle', value: `#${stateData?.cycle_id ?? timestep}`, color: 'text-zinc-400' },
@@ -355,10 +355,10 @@ export default function SimulationDashboard() {
                                 {climate && <span className="flex items-center gap-1">{TREND[climate.trend]} <span className="text-[8px] text-zinc-500">{climate.trend}</span></span>}
                             </div>
                             <div className="grid grid-cols-2 gap-2 text-[10px]">
-                                <div><span className="text-zinc-600">Temp</span><div className={`font-mono font-bold ${climate?.anomaly_detected ? 'text-red-400' : 'text-white'}`}>{climate?.temperature_current.toFixed(1) ?? '—'}°C {climate?.anomaly_detected && '⚠'}</div></div>
-                                <div><span className="text-zinc-600">Anomaly</span><div className="font-mono font-bold text-amber-400">+{climate?.temperature_anomaly.toFixed(1) ?? '0'}°C</div></div>
-                                <div><span className="text-zinc-600">Precip</span><div className="font-mono text-blue-400">{climate?.precipitation_current.toFixed(1) ?? '—'} mm</div></div>
-                                <div><span className="text-zinc-600">Stress</span><div className="font-mono text-orange-400">{climate?.climate_stress_factor.toFixed(2) ?? '—'}x</div></div>
+                                <div><span className="text-zinc-600">Temp</span><div className={`font-mono font-bold ${climate?.anomaly_detected ? 'text-red-400' : 'text-white'}`}>{climate?.temperature_current?.toFixed(1) ?? '—'}°C {climate?.anomaly_detected && '⚠'}</div></div>
+                                <div><span className="text-zinc-600">Anomaly</span><div className="font-mono font-bold text-amber-400">+{climate?.temperature_anomaly?.toFixed(1) ?? '0'}°C</div></div>
+                                <div><span className="text-zinc-600">Precip</span><div className="font-mono text-blue-400">{climate?.precipitation_current?.toFixed(1) ?? '—'} mm</div></div>
+                                <div><span className="text-zinc-600">Stress</span><div className="font-mono text-orange-400">{climate?.climate_stress_factor?.toFixed(2) ?? '—'}x</div></div>
                             </div>
                         </div>
 
@@ -370,12 +370,12 @@ export default function SimulationDashboard() {
                             <div className="flex gap-3 text-[10px]">
                                 <div className="flex-1">
                                     <span className="text-zinc-600">Reservoir</span>
-                                    <div className="font-mono font-bold text-blue-400">{water?.reservoir_level_percent.toFixed(1) ?? '—'}%</div>
+                                    <div className="font-mono font-bold text-blue-400">{water?.reservoir_level_percent?.toFixed(1) ?? '—'}%</div>
                                     <Bar value={water?.reservoir_level_percent ?? 0} color="bg-blue-500" />
                                 </div>
                                 <div className="flex-1">
                                     <span className="text-zinc-600">Days to Critical</span>
-                                    <div className={`font-mono font-bold ${(water?.days_until_critical ?? 99) < 20 ? 'text-red-400' : 'text-emerald-400'}`}>{water?.days_until_critical ?? '—'}d</div>
+                                    <div className={`font-mono font-bold ${((water?.days_until_critical ?? 99) < 20) ? 'text-red-400' : 'text-emerald-400'}`}>{water?.days_until_critical ?? '—'}d</div>
                                 </div>
                             </div>
                         </div>
@@ -386,7 +386,7 @@ export default function SimulationDashboard() {
                                 {social && <span className="flex items-center gap-1">{TREND[social.stability_trend]} <span className="text-[8px] text-zinc-500">{social.stability_trend}</span></span>}
                             </div>
                             <div className="grid grid-cols-2 gap-2 text-[10px]">
-                                <div><span className="text-zinc-600">Inequality</span><div className="font-mono font-bold text-amber-400">{social?.inequality_index.toFixed(2) ?? '—'}</div></div>
+                                <div><span className="text-zinc-600">Inequality</span><div className="font-mono font-bold text-amber-400">{social?.inequality_index?.toFixed(2) ?? '—'}</div></div>
                                 <div><span className="text-zinc-600">Sentiment</span><div className={`font-mono font-bold ${(social?.public_sentiment_score ?? 0) >= 0 ? 'text-emerald-400' : 'text-red-400'}`}>{social?.public_sentiment_score?.toFixed(2) ?? '—'}</div></div>
                                 <div><span className="text-zinc-600">Gov. Conf.</span><div className="font-mono text-purple-400">{((social?.governance_confidence ?? 0) * 100).toFixed(0)}%</div></div>
                                 <div><span className="text-zinc-600">Pressure</span><div className="font-mono text-orange-400">{((social?.public_pressure_score ?? 0) * 100).toFixed(0)}%</div></div>
@@ -398,7 +398,7 @@ export default function SimulationDashboard() {
                         <div className="border border-white/5 rounded-lg p-3 bg-white/[0.02] space-y-3">
                             <p className="text-[9px] text-zinc-500 uppercase tracking-widest">Environment</p>
                             {[
-                                { label: 'CO₂ (ppm)', value: env?.co2_ppm.toFixed(1) ?? '—', color: 'text-red-400', bar: (env?.co2_ppm ?? 420) - 400, max: 80 },
+                                { label: 'CO₂ (ppm)', value: env?.co2_ppm?.toFixed(1) ?? '—', color: 'text-red-400', bar: (env?.co2_ppm ?? 420) - 400, max: 80 },
                                 { label: 'Emission Growth', value: `${((env?.emission_growth_rate ?? 0) * 100).toFixed(1)}%`, color: 'text-orange-400', bar: (env?.emission_growth_rate ?? 0) * 100, max: 10 },
                                 { label: 'Carbon Stress', value: (env?.carbon_stress_index ?? 0).toFixed(2), color: 'text-amber-400', bar: (env?.carbon_stress_index ?? 0) * 100 },
                             ].map(({ label, value, color, bar, max = 100 }) => (
@@ -413,9 +413,9 @@ export default function SimulationDashboard() {
                         <div className="border border-white/5 rounded-lg p-3 bg-white/[0.02] space-y-3">
                             <p className="text-[9px] text-zinc-500 uppercase tracking-widest">Economy</p>
                             {[
-                                { label: 'GDP Growth', value: `${economy?.gdp_growth_rate.toFixed(1) ?? '—'}%`, color: 'text-emerald-400' },
+                                { label: 'GDP Growth', value: `${economy?.gdp_growth_rate?.toFixed(1) ?? '—'}%`, color: 'text-emerald-400' },
                                 { label: 'Industry Profit', value: (economy?.industry_profit_index ?? 0).toFixed(2), color: 'text-blue-400' },
-                                { label: 'Energy Price', value: `${economy?.energy_price_index.toFixed(2) ?? '—'}x`, color: 'text-amber-400' },
+                                { label: 'Energy Price', value: `${economy?.energy_price_index?.toFixed(2) ?? '—'}x`, color: 'text-amber-400' },
                                 { label: 'Econ Stability', value: `${((economy?.economic_stability_score ?? 0) * 100).toFixed(0)}%`, color: 'text-purple-400' },
                             ].map(({ label, value, color }) => (
                                 <div key={label} className="flex justify-between text-[10px]">
@@ -537,9 +537,9 @@ export default function SimulationDashboard() {
                             {tooltip.node.stress > 0.75 ? 'CRITICAL' : tooltip.node.stress > 0.5 ? 'HIGH STRESS' : tooltip.node.stress > 0.25 ? 'MODERATE' : 'HEALTHY'}
                         </div>
                         <div className="space-y-0.5 text-zinc-400">
-                            <div className="flex justify-between gap-4"><span>Stress</span><span className="font-mono text-white">{(tooltip.node.stress * 100).toFixed(0)}/100</span></div>
-                            <div className="flex justify-between gap-4"><span>Emissions</span><span className="font-mono text-red-400">{Math.abs(tooltip.node.emissions).toFixed(0)} Kt</span></div>
-                            <div className="flex justify-between gap-4"><span>Vulnerability</span><span className="font-mono text-amber-400">{(Math.abs(tooltip.node.vulnerability) * 100).toFixed(0)}</span></div>
+                            <div className="flex justify-between gap-4"><span>Stress</span><span className="font-mono text-white">{((tooltip.node.stress ?? 0) * 100).toFixed(0)}/100</span></div>
+                            <div className="flex justify-between gap-4"><span>Emissions</span><span className="font-mono text-red-400">{Math.abs(tooltip.node.emissions ?? 0).toFixed(0)} Kt</span></div>
+                            <div className="flex justify-between gap-4"><span>Vulnerability</span><span className="font-mono text-amber-400">{(Math.abs(tooltip.node.vulnerability ?? 0) * 100).toFixed(0)}</span></div>
                         </div>
                         {tooltip.node.stress > 0.75 && <div className="mt-1.5 text-[8px] text-red-400 border-t border-white/5 pt-1.5">⚠ Traffic Congestion &amp; Air Quality</div>}
                     </div>
